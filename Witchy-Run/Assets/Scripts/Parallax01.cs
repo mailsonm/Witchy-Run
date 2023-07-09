@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Parallax : MonoBehaviour
+public class Parallax01 : MonoBehaviour
 {
     private Material material;
     private Vector2 offset;
@@ -13,14 +13,15 @@ public class Parallax : MonoBehaviour
         material = GetComponent<MeshRenderer>().material; 
     }
 
-    // Update is called once per frame
     void Update()
     {
         offset.Set(offset.x + Time.deltaTime * velocidade, 0);
         
-        if(offset.x >= 1){
-            offset.Set(0, 0);
-            material.mainTextureOffset = offset;
+        if (offset.x >= 1)
+        {
+            offset.x = 0;
         }
+        
+        material.mainTextureOffset = offset;
     }
 }
