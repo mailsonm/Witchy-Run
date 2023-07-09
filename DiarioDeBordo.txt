@@ -1,0 +1,5 @@
+A versão da unity usada foi a 2022.3.3f1
+
+Para o Backgroud baixei o FREE Parallax Forest Background HQ na unity store
+
+Criei o script de parallax e ajustei cada camada do backgroud com uma velocidade porem o efeito deixava um rastro antes de voltar a repetir a imagem, para corrigir esse rastro mudei o Warp Mode das imagens para Repeat.
