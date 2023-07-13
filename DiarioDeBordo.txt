@@ -2,4 +2,11 @@ A versão da unity usada foi a 2022.3.3f1
 
 Para o Backgroud baixei o FREE Parallax Forest Background HQ na unity store
 
-Criei o script de parallax e ajustei cada camada do backgroud com uma velocidade porem o efeito deixava um rastro antes de voltar a repetir a imagem, para corrigir esse rastro mudei o Warp Mode das imagens para Repeat.
+Usei as imagens para compor o cenario de Background e mudando para o modo 3D posicionei de modo desejado para ficar um na frente do outro depois voltando para o 2D. Criei o script de parallax e ajustei cada camada do backgroud com uma velocidade porem o efeito deixava um rastro antes de voltar a repetir a imagem, para corrigir esse rastro mudei o Warp Mode das imagens para Repeat dessa vez o efeito funcionando perfeitamente.
+
+Adicionei o personagem e a animação de andar, fiz o script de movimentação e reconhecimento do chão. 
+Para o reconhecimento do chão funcionar, criei um novo Layer no inspetor chamado "ground", criei um novo objeto vazio com um box collider 2D e posicionei onde queria que fosse o chão.
+Criei um novo objeto vazio filho do "personagem" chamando de "groundCheck" com um circle collider 2D posicionado nos pés do personagem, e para ele identificar quando está pulando arrastei o "groundCheck" para o script do personagem na perte de ground Check que deixei visível no inspetor.
+no script também adicionei um "jumpCount" e um "maxJumpCount" para definir o numero de pulos permitidos.
+
+

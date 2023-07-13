@@ -8,8 +8,8 @@ public class PersonagemMovimento : MonoBehaviour
     private Animator animator;
     private bool isGrounded;
     private int jumpCount;
-    [SerializeField] private int maxJumpCount = 2; // Define o número máximo de pulos permitidos
-
+    
+    [SerializeField] private int maxJumpCount = 0; // Define o número máximo de pulos permitidos
     [SerializeField] private float forcaPulo = 550f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
