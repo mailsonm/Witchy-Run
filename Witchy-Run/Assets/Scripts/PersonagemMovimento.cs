@@ -2,52 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PersonagemMovimento : MonoBehaviour
+public class PersonagemMovitento : MonoBehaviour
 {
+    private float horizontalInput;
     private Rigidbody2D rb;
+
+    [SerializeField] private int velocidade = 5;
+
+    [SerializeField] private Transform peDoPersonagem;
+    [SerializeField] private LayerMask chaoLayer;
+
+    private bool estaNoChao;
     private Animator animator;
-    private bool isGrounded;
-    private int jumpCount;
-    
-    [SerializeField] private int maxJumpCount = 0; // Define o número máximo de pulos permitidos
-    [SerializeField] private float forcaPulo = 550f;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
+    private SpriteRenderer spriteRenderer;
+
+    private int movendoHash = Animator.StringToHash("movendo");
+    private int saltandoHash = Animator.StringToHash("saltando");
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        horizontalInput = Input.GetAxis("Horizontal");
 
-        if (isGrounded)
+        // Verifica se o jogador pressionou a tecla de espaço e se ele está no chão
+        if (Input.GetKeyDown(KeyCode.Space) && estaNoChao)
         {
-            jumpCount = 0; // Reinicia o contador de pulos se estiver no chão
-            animator.SetBool("IsJumping", false);
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                Jump();
-            }
+            // Aplica uma força vertical para o jogador pular
+            rb.AddForce(Vector2.up * 600);
         }
-        else
+
+        // Verifica se o jogador está no chão usando um círculo de colisão
+        estaNoChao = Physics2D.OverlapCircle(peDoPersonagem.position, 0.2f, chaoLayer);
+
+        // Atualiza os parâmetros do Animator para controlar as animações
+        animator.SetBool(movendoHash, horizontalInput != 0);
+        animator.SetBool(saltandoHash, !estaNoChao);
+
+        if (horizontalInput > 0)
         {
-            if (Input.GetMouseButtonDown(0) && jumpCount < maxJumpCount)
-            {
-                Jump();
-            }
+            spriteRenderer.flipX = false;
+        }
+        else if (horizontalInput < 0)
+        {
+            spriteRenderer.flipX = true;
         }
     }
 
-    private void Jump()
+    private void FixedUpdate()
     {
-        rb.velocity = Vector2.zero;
-        rb.AddForce(Vector2.up * forcaPulo);
-        animator.SetBool("IsJumping", true);
-        jumpCount++;
+        // Aplica a velocidade horizontal ao Rigidbody
+        rb.velocity = new Vector2(horizontalInput * velocidade, rb.velocity.y);
     }
 }

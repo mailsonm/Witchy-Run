@@ -9,4 +9,6 @@ Para o reconhecimento do chão funcionar, criei um novo Layer no inspetor chamad
 Criei um novo objeto vazio filho do "personagem" chamando de "groundCheck" com um circle collider 2D posicionado nos pés do personagem, e para ele identificar quando está pulando arrastei o "groundCheck" para o script do personagem na perte de ground Check que deixei visível no inspetor.
 no script também adicionei um "jumpCount" e um "maxJumpCount" para definir o numero de pulos permitidos.
 
+por algum motivo quando adicionei a animação pra quando ela estiver pulando o codigo de contador de pulo bugou ai es vezes ela pulava sem fazer a animação de pulo e podia pular novamente pedi ajuda ao chat gpt para dar uma olhada e corrigir meu codigo corrigir meu codigo ele modificou a forma como resetar a contagem de pulos e com isso corrigiu o bug.
+
 
