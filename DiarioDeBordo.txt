@@ -11,4 +11,8 @@ no script também adicionei um "jumpCount" e um "maxJumpCount" para definir o nu
 
 por algum motivo quando adicionei a animação pra quando ela estiver pulando o codigo de contador de pulo bugou ai es vezes ela pulava sem fazer a animação de pulo e podia pular novamente pedi ajuda ao chat gpt para dar uma olhada e corrigir meu codigo corrigir meu codigo ele modificou a forma como resetar a contagem de pulos e com isso corrigiu o bug.
 
+criei 4 inimigos com animações de andar apenas e fiz 2 scripts de movimentação. um de movimentação horizontal para todos os inimigos que define a velocidade de cada um, e outro que faz a movimentação vertical para o inimigo que voa assim se adicionar os 2 scripts no inimigo que voa ele tanto vai para frente quanto vai para cima e para baixo, enquanto os outros inimigos que não voam só é adicionado 1 script.
+
+
+
 

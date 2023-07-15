@@ -49,6 +49,7 @@ public class PersonagemMovitento01 : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         rb.AddForce(Vector2.up * forcaPulo);
+        GetComponent<AudioSource>().Play();
         animator.SetBool("IsJumping", true);
     }
 }
